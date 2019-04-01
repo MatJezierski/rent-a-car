@@ -3,10 +3,7 @@ package matjez.rentacarapp.controllers;
 import matjez.rentacarapp.models.Car;
 import matjez.rentacarapp.models.dtos.CarDto;
 import matjez.rentacarapp.services.CarService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,8 +32,25 @@ public class CarController {
      * */
     @GetMapping("/dto/cars")
     public List<CarDto> getCarsDto() {
+
         return carService.getCarsDto();
     }
 
+    @PostMapping("/dto/cars")
+    public Car addCar(@RequestBody CarDto carDto){
+
+        return carService.addCar(carDto);
+    }
+
+    @PutMapping("/dto/cars")
+    public void updateCar(@RequestBody CarDto carDto){
+
+        carService.updateCar(carDto);
+    }
+
+    @DeleteMapping("/dto/cars/{carModel}")
+    public void deleteCar(@PathVariable String carModel){
+        carService.deleteCar(carModel);
+    }
 
 }

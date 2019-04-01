@@ -48,4 +48,25 @@ public class CarService {
                 .collect(Collectors.toList());
     }
 
+    public Car addCar(CarDto carDto){
+        return carRepository.save(carMapper.reversedMap(carDto));
+    }
+
+    public void updateCar(CarDto carDto){
+        carRepository
+                .findCarByCarModel(carDto.getCarModel())
+                .ifPresent(c -> {
+                    c.setCarPrizePerDay(carDto.getCarPrizePerDay());
+                    c.setCarType(carDto.getCarType());
+                    c.setAvailable(carDto.isAvailable());
+                    c.setCarImage(carDto.getCarImage());
+
+                    carRepository.save(c);
+                });
+    }
+
+    public void deleteCar(String carModel){
+        carRepository.deleteCarByCarModel(carModel);
+    }
+
 }
