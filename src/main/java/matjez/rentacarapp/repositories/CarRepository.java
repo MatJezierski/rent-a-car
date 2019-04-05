@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -21,5 +22,8 @@ public interface CarRepository extends JpaRepository<Car,Long> {
     @Modifying
     @Query("select c from Car c where c.carModel = ?1")
     void deleteCarByCarModel(String carModel);
+
+    @Query("select c from Car c where c.carType = ?1")
+    List<Car> findCarsByCarType(String carType);
 
 }

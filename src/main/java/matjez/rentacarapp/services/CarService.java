@@ -69,4 +69,12 @@ public class CarService {
         carRepository.deleteCarByCarModel(carModel);
     }
 
+    public List<CarDto> getCarsByCarType(String carType){
+
+        return carRepository.findCarsByCarType(carType)
+                .stream()
+                .map(carMapper::map)
+                .collect(Collectors.toList());
+    }
+
 }
