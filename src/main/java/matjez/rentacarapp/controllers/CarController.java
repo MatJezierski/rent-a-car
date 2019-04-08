@@ -34,6 +34,14 @@ public class CarController {
 //        return carService.getCarsDto();
 //    }
 
+    @GetMapping("/dto/cars")
+    public List<CarDto> getCarsDto(@RequestParam(value ="carType", required = false) String carType) {
+        if(carType != null){
+            return carService.getCarsByCarType(carType);
+        }
+        return carService.getCarsDto();
+    }
+
     @PostMapping("/dto/cars")
     public Car addCar(@RequestBody CarDto carDto){
         return carService.addCar(carDto);
@@ -47,14 +55,6 @@ public class CarController {
     @DeleteMapping("/dto/cars/{carModel}")
     public void deleteCar(@PathVariable String carModel){
         carService.deleteCar(carModel);
-    }
-
-    @GetMapping("/dto/cars")
-    public List<CarDto> getCarsDto(@RequestParam(value ="carType", required = false) String carType) {
-       if(carType != null){
-           return carService.getCarsByCarType(carType);
-       }
-       return carService.getCarsDto();
     }
 
 }
