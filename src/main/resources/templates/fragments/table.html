@@ -1,0 +1,31 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org" th:fragment="table">
+    <div class="row">
+        <div class="col-12-md">
+            <table class="table table-bordered">
+                <tr>
+                    <th>car model</th>
+                    <th>car type</th>
+                    <th>car prize per day</th>
+                    <th>availability</th>
+                    <th>car image</th>
+                </tr>
+
+                <tr th:each="c : ${cars}">
+                    <td th:text="${c.getCarModel()}"></td>
+                    <td th:text="${c.getCarType()}"></td>
+                    <td th:text="${#numbers.formatInteger(c.getCarPrizePerDay(), 1, 2, 'POINT')}"></td>
+                    <td th:text="${c.isAvailable()}"></td>
+                    <td th:text="${c.getCarImage()}"></td>
+
+                    <td>
+                        <form action="/delete" method="get">
+                            <input type="hidden" th:value="${c.getCarModel()}" name="car">
+                            <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                        </form>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,7 @@ public interface CarRepository extends JpaRepository<Car,Long> {
 
     @Transactional
     @Modifying
-    @Query("select c from Car c where c.carModel = ?1")
+    @Query("delete from Car c where c.carModel = ?1")
     void deleteCarByCarModel(String carModel);
 
     @Query("select c from Car c where c.carType = ?1")
