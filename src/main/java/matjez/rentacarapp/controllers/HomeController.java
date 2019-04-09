@@ -1,9 +1,12 @@
 package matjez.rentacarapp.controllers;
 
+import matjez.rentacarapp.models.dtos.CarDto;
 import matjez.rentacarapp.services.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -36,6 +39,12 @@ public class HomeController {
     @GetMapping("/delete")
     public String deleteCar(@RequestParam(name = "car") String carModel){
         carService.deleteCar(carModel);
+        return "redirect:/cars";
+    }
+
+    @PostMapping("/add")
+    public String addCar(@ModelAttribute CarDto car){
+        carService.addCar(car);
         return "redirect:/cars";
     }
 

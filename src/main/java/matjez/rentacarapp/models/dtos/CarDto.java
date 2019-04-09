@@ -20,6 +20,8 @@ public class CarDto {
 
     private double carPrizePerDay;
 
+    private String carInfo;
+
     private boolean isAvailable;
 
     private String carImage;

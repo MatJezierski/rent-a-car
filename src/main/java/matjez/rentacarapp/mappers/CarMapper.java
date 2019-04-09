@@ -14,6 +14,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
                 .carModel(from.getCarModel())
                 .carType(from.getCarType())
                 .carPrizePerDay(from.getCarPrizePerDay())
+                .carInfo(from.getCarInfo())
                 .isAvailable(from.isAvailable())
                 .carImage(from.getCarImage())
                 .build();
@@ -26,6 +27,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
                 .carModel(to.getCarModel())
                 .carType(to.getCarType())
                 .carPrizePerDay(to.getCarPrizePerDay())
+                .carInfo(to.getCarInfo())
                 .isAvailable(to.isAvailable())
                 .carImage(to.getCarImage())
                 .build();

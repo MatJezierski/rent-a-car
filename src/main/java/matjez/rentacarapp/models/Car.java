@@ -28,6 +28,9 @@ public class Car {
     @Column(name = "car_prize_per_day")
     private double carPrizePerDay;
 
+    @Column (name = "car_info")
+    private String carInfo;
+
     @Column(name = "availability")
     private boolean isAvailable;
 

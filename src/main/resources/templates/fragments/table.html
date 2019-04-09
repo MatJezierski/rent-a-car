@@ -6,6 +6,7 @@
                     <th>car model</th>
                     <th>car type</th>
                     <th>car prize per day</th>
+                    <th>car info</th>
                     <th>availability</th>
                     <th>car image</th>
                 </tr>
@@ -14,6 +15,7 @@
                     <td th:text="${c.getCarModel()}"></td>
                     <td th:text="${c.getCarType()}"></td>
                     <td th:text="${#numbers.formatInteger(c.getCarPrizePerDay(), 1, 2, 'POINT')}"></td>
+                    <td th:text="${c.getCarInfo()}"></td>
                     <td th:text="${c.isAvailable()}"></td>
                     <td th:text="${c.getCarImage()}"></td>
 

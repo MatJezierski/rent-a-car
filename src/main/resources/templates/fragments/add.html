@@ -1,0 +1,17 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org" th:fragment="add">
+    <div class="row">
+        <div class="col-12-md">
+            <form th:action="@{/add}" th:object="${car}" method="post" action="/add">
+                <input type="text" name="carModel" placeholder="Car model">
+                <input type="text" name="carType" placeholder="Car type">
+                <input type="number" step="0.01" name="carPrizePerDay" placeholder="Car prize">
+                <textarea type="text" rows="4" cols="30" name="carInfo" placeholder="Car info"></textarea>
+                <input type="text" name="isAvailable" placeholder="Is available?">
+                <input type="text" name="carImage" placeholder="Car image">
+
+                <button type="submit" class="btn btn-sm btn-success" >Add new car</button>
+
+            </form>
+        </div>
+    </div>
+</div>
