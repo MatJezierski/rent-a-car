@@ -52,15 +52,25 @@ public class XLSCreator<T> {
             for (int j=0; j<columns.size(); j++){
                 HSSFCell cell = row.createCell(j);
 
-                Method method = series.get(i)
-                        .getClass()
-                        .getMethod("get" + columns.get(j)
-                        .substring(0,1)
-                                .toUpperCase() + columns.get(j)
-                                .substring(1));
+                if(columns.get(j).startsWith("is")){
+                    Method method = series.get(i)
+                            .getClass()
+                            .getMethod(columns.get(j));
 
-                Object result = method.invoke(series.get(i));
-                cell.setCellValue(String.valueOf(result));
+                    Object result = method.invoke(series.get(i));
+                    cell.setCellValue(String.valueOf(result));
+
+                } else {
+                    Method method = series.get(i)
+                            .getClass()
+                            .getMethod("get" + columns.get(j)
+                                    .substring(0, 1)
+                                    .toUpperCase() + columns.get(j)
+                                    .substring(1));
+
+                    Object result = method.invoke(series.get(i));
+                    cell.setCellValue(String.valueOf(result));
+                }
             }
         }
 
