@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="fragments/header :: head"></head>
 
 <body>
 
 <header class="masterhead">
-<div class="row h-100 align-items-center">
-    <div class="col-12 text-center">
-        <h3 class="font-weight-light content">Welcome to Rent A Car application system.
-            <br><span class="content-header">Join us and rent your car now!</span>
-        </h3>
-        <a href="/cars"><p>Admin Panel</p></a>
+
+<div class="container">
+    <div class="row h-100 align-items-center">
+        <div class="col-12 text-center">
+            <h3 class="font-weight-light content">Welcome to Rent A Car application system.
+                <br><span class="content-header">Join us and rent your car now!</span>
+            </h3>
+            <a href="/cars"><p>Admin Panel</p></a>
+        </div>
     </div>
+
+    <div class="row">
+        <div th:replace="fragments/overview :: cars"></div>
+    </div>
+
 </div>
+
 </header>
 
 </body>

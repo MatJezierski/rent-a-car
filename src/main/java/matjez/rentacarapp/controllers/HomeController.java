@@ -26,7 +26,8 @@ public class HomeController {
     */
 
     @GetMapping("/")
-    public String homePage(){
+    public String homePage(Model model){
+        model.addAttribute("cars", carService.getCarsDto());
         return "index";
     }
 

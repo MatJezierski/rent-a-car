@@ -1,0 +1,12 @@
+
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="cars">
+    <div class="card" style="width: 18rem;" th:each="c : ${cars}">
+        <img class="card-img-top" th:src="@{${c.getCarImage()}}" alt="Car view" style="width: auto; height: 240px">
+        <div class="card-body">
+            <h5 class="card-title" style="color:white" th:text="${c.getCarModel()}"></h5>
+            <p class="card-text" style="color:wheat" th:text="${c.getCarInfo()}"></p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+
