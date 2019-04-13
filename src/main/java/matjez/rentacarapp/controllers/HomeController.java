@@ -1,5 +1,6 @@
 package matjez.rentacarapp.controllers;
 
+import matjez.rentacarapp.extras.XLSCreator;
 import matjez.rentacarapp.models.dtos.CarDto;
 import matjez.rentacarapp.services.CarService;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 @Controller
 public class HomeController {
@@ -47,6 +51,14 @@ public class HomeController {
     public String addCar(@ModelAttribute CarDto car){
         carService.addCar(car);
         return "redirect:/cars";
+    }
+
+    @GetMapping("/excel")
+    public String createXLSFile() throws NoSuchMethodException,
+            IOException, IllegalAccessException, InvocationTargetException {
+        XLSCreator<CarDto> creator = new XLSCreator<>(CarDto.class);
+        creator.createFile(carService.getCarsDto(),"src/main/resources", "cars");
+        return "redirect:/";
     }
 
 }
