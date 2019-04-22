@@ -2,7 +2,9 @@ package matjez.rentacarapp.controllers;
 
 import matjez.rentacarapp.extras.XLSCreator;
 import matjez.rentacarapp.models.dtos.CarDto;
+import matjez.rentacarapp.models.dtos.CustomerDto;
 import matjez.rentacarapp.services.CarService;
+import matjez.rentacarapp.services.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +20,12 @@ public class HomeController {
 
     private CarService carService;
 
-    public HomeController(CarService carService) {
-        this.carService = carService;
-    }
+    private CustomerService customerService;
 
+    public HomeController(CarService carService, CustomerService customerService) {
+        this.carService = carService;
+        this.customerService = customerService;
+    }
     /*
     * Ta klasa jest poza pakietem "controllers", jako że to nie będzie controller RESTowy.
     * Poza tym "view" ma być w założeniu w Angularze, nie tak jak teraz w zwykłym HTMLu,
@@ -32,6 +36,7 @@ public class HomeController {
     @GetMapping("/")
     public String homePage(Model model){
         model.addAttribute("cars", carService.getCarsDto());
+        model.addAttribute("customers", customerService.getCustomersDto());
         return "index";
     }
 
@@ -51,6 +56,24 @@ public class HomeController {
     public String addCar(@ModelAttribute CarDto car){
         carService.addCar(car);
         return "redirect:/cars";
+    }
+
+    @GetMapping("/customers")
+    public String customersPage(Model model){
+        model.addAttribute("customers",customerService.getCustomersDto());
+        return "customers";
+    }
+
+    @GetMapping("/deleteCustomer")
+    public String deleteCustomer(@RequestParam(name = "customer") String customerSurname){
+        customerService.deleteCustomer(customerSurname);
+        return "redirect:/customers";
+    }
+
+    @PostMapping("/addCustomer")
+    public String addCustomer(@ModelAttribute CustomerDto customerDto){
+        customerService.addCustomer(customerDto);
+        return "redirect:/customers";
     }
 
     @GetMapping("/excel")

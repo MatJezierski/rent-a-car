@@ -1,0 +1,15 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org" th:fragment="add">
+    <div class="row">
+        <div class="col-12-md">
+            <form th:action="@{/add}" th:object="${customer}" method="post" action="/add">
+                <input type="text" name="customerName" placeholder="Customer's name">
+                <input type="text" name="customerSurname" placeholder="Customer's surname">
+                <input type="number" name="customerAge" placeholder="Customer's age">
+                <textarea type="text" rows="4" cols="30" name="customerAddress" placeholder="Customer's address"></textarea>
+
+                <button type="submit" class="btn btn-sm btn-success">Add new customer</button>
+
+            </form>
+        </div>
+    </div>
+</div>

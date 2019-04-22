@@ -1,0 +1,28 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org" th:fragment="table">
+    <div class="row">
+        <div class="col-12-md">
+            <table class="table table-bordered">
+                <tr>
+                    <th>customer's name</th>
+                    <th>customer's surname</th>
+                    <th>customer's age</th>
+                    <th>customer's address</th>
+                </tr>
+
+                <tr th:each="cu : ${customer}">
+                    <td th:text="${cu.getCustomerName()}"></td>
+                    <td th:text="${cu.getCustomerSurname()}"></td>
+                    <td th:text="${cu.getCustomerAge()}"></td>
+                    <td th:text="${cu.getCustomerAddress()}"></td>
+
+                    <td>
+                        <form action="/delete" method="get">
+                            <input type="hidden" th:value="${cu.getCustomerSurname()}" name="customer">
+                            <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
