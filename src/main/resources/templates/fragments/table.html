@@ -16,7 +16,7 @@
                     <td th:text="${c.getCarType()}"></td>
                     <td th:text="${#numbers.formatDecimal(c.getCarPrizePerDay(), 1, 2, 'POINT')}"></td>
                     <td th:text="${c.getCarInfo()}"></td>
-                    <td th:text="${c.isAvailable()}"></td>
+                    <td th:text="${c.getIsAvailable()}"></td>
                     <td th:text="${c.getCarImage()}"></td>
 
                     <td>

@@ -22,7 +22,7 @@ public class CarDto {
 
     private String carInfo;
 
-    private boolean isAvailable;
+    private Boolean isAvailable;
 
     private String carImage;
 

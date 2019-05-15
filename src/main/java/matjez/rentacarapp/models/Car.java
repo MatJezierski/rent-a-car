@@ -17,6 +17,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", insertable = false, updatable = false)
     private Long id;
 
     @Column(name = "car_model", nullable = false, unique = true)
@@ -32,7 +33,7 @@ public class Car {
     private String carInfo;
 
     @Column(name = "availability")
-    private boolean isAvailable;
+    private Boolean isAvailable;
 
     @Column(name = "car_image")
     private String carImage;

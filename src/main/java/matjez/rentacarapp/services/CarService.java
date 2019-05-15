@@ -4,6 +4,7 @@ import matjez.rentacarapp.mappers.CarMapper;
 import matjez.rentacarapp.models.Car;
 import matjez.rentacarapp.models.dtos.CarDto;
 import matjez.rentacarapp.repositories.CarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class CarService {
     private CarRepository carRepository;
     private CarMapper carMapper;
 
+    @Autowired
     public CarService(CarRepository carRepository, CarMapper carMapper) {
         this.carRepository = carRepository;
         this.carMapper = carMapper;
@@ -58,7 +60,7 @@ public class CarService {
                 .ifPresent(c -> {
                     c.setCarPrizePerDay(carDto.getCarPrizePerDay());
                     c.setCarType(carDto.getCarType());
-                    c.setAvailable(carDto.isAvailable());
+                    c.setIsAvailable(carDto.getIsAvailable());
                     c.setCarImage(carDto.getCarImage());
 
                     carRepository.save(c);
